@@ -18,9 +18,9 @@ System.setProperty("webdriver.chrome.driver", "C:\\Users\\Dell 7470\\Desktop\\ch
 WebDriver driver=new ChromeDriver();
 driver.manage().timeouts().implicitlyWait(30, TimeUnit.SECONDS);
 driver.manage().window().maximize();
-driver.get("http://vikrant.smart.shopx.co.in/smart_admin");
-driver.findElement(By.xpath("//input[@type='tel']")).sendKeys("0000000001");
-driver.findElement(By.xpath("//input[@type='password']")).sendKeys("359256");
+driver.get("http://XXXXXX.shopx.co.in/smart_admin");
+driver.findElement(By.xpath("//input[@type='tel']")).sendKeys("vik");
+driver.findElement(By.xpath("//input[@type='password']")).sendKeys("kum");
 driver.findElement(By.xpath("//button[@ng-click='signIn()']")).click();
 Thread.sleep(3000);
 driver.findElement(By.xpath("//a[contains(text(),'Manage Distributors')]")).click();
