@@ -1,0 +1,53 @@
+package com.test.pack;
+import java.util.List;
+import java.util.concurrent.TimeUnit;
+import org.openqa.selenium.By;
+import org.openqa.selenium.Keys;
+import org.openqa.selenium.WebDriver;
+import org.openqa.selenium.WebElement;
+import org.openqa.selenium.chrome.ChromeDriver;
+import org.openqa.selenium.support.ui.ExpectedConditions;
+import org.openqa.selenium.support.ui.WebDriverWait;
+
+public class Demo {
+
+
+public static void main(String[] args) throws InterruptedException {
+ 
+System.setProperty("webdriver.chrome.driver", "C:\\Users\\Dell 7470\\Desktop\\chromedriver.exe"); 
+WebDriver driver=new ChromeDriver();
+driver.manage().timeouts().implicitlyWait(30, TimeUnit.SECONDS);
+driver.manage().window().maximize();
+driver.get("http://vikrant.smart.shopx.co.in/smart_admin");
+driver.findElement(By.xpath("//input[@type='tel']")).sendKeys("0000000001");
+driver.findElement(By.xpath("//input[@type='password']")).sendKeys("359256");
+driver.findElement(By.xpath("//button[@ng-click='signIn()']")).click();
+Thread.sleep(3000);
+driver.findElement(By.xpath("//a[contains(text(),'Manage Distributors')]")).click();
+Thread.sleep(7000);
+WebDriverWait wait = new WebDriverWait(driver, 30);
+WebElement element = wait.until(
+       ExpectedConditions.elementToBeClickable(By.xpath("//button[contains(text(),'Register Distributor')]")));
+element.click();
+//driver.findElement(By.xpath("//button[contains(text(),'Register Distributor')]")).click();
+driver.findElement(By.xpath("//button[contains(text(),'Traditional Distributor')]")).click();
+driver.findElement(By.xpath("(//button[contains(text(),'LMDN Distributor')])[1]")).click();
+driver.findElement(By.id("checkPincode ")).sendKeys("560031");
+driver.findElement(By.xpath("//button[contains(text(),'Verify')]")).click();
+WebElement data=driver.findElement(By.xpath("//input[@id='address']"));
+data.sendKeys("shopx");
+WebElement t = driver.findElement(By.xpath("//div[@class='pac-container pac-logo hdpi']")); 
+List<WebElement> ss = t.findElements(By.xpath("//div[@class='pac-item']"));
+System.out.println(ss.size());
+for(int i=0;i<ss.size();i++){
+  String listitem=ss.get(i).getText();
+  System.out.println(listitem);
+  if(listitem.contains(""))
+  {
+	   System.out.println("Element is present in the list");
+	   ss.get(i).click();
+	   break;
+  }
+}
+}
+}
